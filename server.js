@@ -25,16 +25,16 @@ db.once('open', () => {
 // Things that need to happen:
 // FRIENDS:
 //    POST Add friend
-//    DELETE Remove friend
+//    DELETE Remove friend BY ID
 // USERS:
 //    GET Find all users
-//    GET Find user by id
+//    GET Find user BY ID
 //    POST Create user
 //    POST Create second user (?)
 //    POST Create third user (?)
 // REACTIONS:
 //    POST Create reaction
-//    DELETE Remove friend
+//    DELETE Remove reaction BY ID
 // THOUGHTS:
 //    GET Get all thoughts
 //    POST Create thought

@@ -9,5 +9,4 @@ router.use('/reactions', reactionsRoutes);
 router.use('/thoughts', thoughtsRoutes);
 router.use('/users', usersRoutes);
 
-
 module.exports = router;
