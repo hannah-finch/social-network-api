@@ -22,6 +22,8 @@ db.once('open', () => {
 
 // NOTES:
 
+// I WROTE ROUTES WITHOUT LOOKING AT THE README.... so they need to be adjusted, but later, cause I wanna do models now
+
 // Things that need to happen:
 // FRIENDS:
 //    POST Add friend

@@ -1,5 +1,5 @@
 // require necessary models
-const { } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   async getUsers(req, res) {
