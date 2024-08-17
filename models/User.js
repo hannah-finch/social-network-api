@@ -31,7 +31,6 @@ const userSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      // do I need getters: true ? I don't understand getters/setters very well yet.
     },
   }
 );
