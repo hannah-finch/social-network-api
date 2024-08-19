@@ -2,7 +2,6 @@
 const { Thought, User } = require('../models');
 
 
-
 module.exports = {
   async getUsers(req, res) {
     try {
@@ -12,12 +11,13 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  //TODO GET a single user by its _id and populated thought and friend data
-// rn this works to get a user, but I need to bring in thought and friend data. Remember the thing in class where info can show here, and not in get all.
+  //TODO this works to get a user, but I'm not sure if the populate works. Check back after adding some thoughts and friends
   async getUserById(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId})
-        .select('-__v');
+        .select('-__v')
+        .populate('thoughts')
+        .populate('friends');
       
         if (!user) {
           return res.status(404).json({ message: 'No user with that ID' })
@@ -44,20 +44,37 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  //TODO
+
   async updateUserById(req, res) {
     try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
 
+      if (!user) {
+        res.status(404).json({ message: 'No user with this id' });
+      }
+
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
   },
 
   // bonus, remove user's associated thoughts when deleted
-  //TODO
+  //TODO come back and check if this works to delete thoughts with the user
   async deleteUserById(req, res) {
     try {
+      const user = await User.findOneAndDelete({ _id: req.params.userId });
 
+      if (!user) {
+        res.status(404).json( { message: 'No user with that ID' })
+      }
+
+      await Thought.deleteMany({ _id: { $in: user.thoughts }});
+      res.json({ message: `User and user's thoughts deleted` })
     } catch (err) {
       res.status(500).json(err);
     }
