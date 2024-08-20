@@ -1,5 +1,5 @@
 // require necessary models
-const { Thought, User, Reaction } = require('../models');
+const { Thought } = require('../models');
 
 /*
 Example reaction:

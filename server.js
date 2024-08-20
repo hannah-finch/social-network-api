@@ -19,8 +19,11 @@ db.once('open', () => {
 });
 
 
-
+ 
 // NOTES:
+
+// Left to do: getter function to format date
+
 
 // I WROTE ROUTES WITHOUT LOOKING AT THE README.... so they need to be adjusted, but later, cause I wanna do models now
 

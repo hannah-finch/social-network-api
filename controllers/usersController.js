@@ -11,7 +11,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  //TODO this works to get a user, but I'm not sure if the populate works. Check back after adding some thoughts and friends
+
   async getUserById(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId})
@@ -64,7 +64,7 @@ module.exports = {
   },
 
   // bonus, remove user's associated thoughts when deleted
-  //TODO come back and check if this works to delete thoughts with the user
+
   async deleteUserById(req, res) {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.userId });

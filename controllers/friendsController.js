@@ -1,5 +1,5 @@
 // require necessary models
-const { Thought, User } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
   async addFriend(req, res) {
