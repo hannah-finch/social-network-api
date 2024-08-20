@@ -9,7 +9,6 @@ Example reaction:
 }
 */
 
-
 module.exports = {
   async createReaction(req, res) {
     try {
