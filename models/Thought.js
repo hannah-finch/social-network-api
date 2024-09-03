@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction')
+const reactionSchema = require('./Reaction');
+const formatDate = require('../utils/formatDate');
 
 const thoughtSchema = new Schema(
   {
@@ -9,7 +10,6 @@ const thoughtSchema = new Schema(
       maxLength: 120,
       minLength: 1,
     },
-    // TODO Use a getter method to format the timestamp on query
     createdAt: {
       type: Date,
       default: Date.now,
@@ -38,10 +38,6 @@ const thoughtSchema = new Schema(
 thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length
 })
-
-function formatDate(timestamp) {
-  return new Date(timestamp).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-}
 
 const Thought = model('thought', thoughtSchema);
 

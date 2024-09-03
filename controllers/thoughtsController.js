@@ -1,6 +1,15 @@
 // require necessary models
 const { Thought, User } = require('../models');
 
+  // example data
+/*
+{
+  "thoughtText": "Here's a cool thought...",
+  "username": "lernantino",
+  "userId": "5edff358a0fcb779aa7b118b"
+}
+*/
+
 module.exports = {
   async getThoughts(req, res) {
     try {
@@ -11,20 +20,12 @@ module.exports = {
     }
   },
 
-  // example data
-/*
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-*/
-
-//  (don't forget to push the created thought's _id to the associated user's thoughts array field)
+// create a thought
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
 
+      // push the created thought's _id to the associated user's thoughts array field
       const user = await User.findOneAndUpdate(
         { _id: req.body.userId }, 
         { $addToSet: { thoughts: thought._id }},
@@ -36,6 +37,7 @@ module.exports = {
     }
   },
 
+  // get a thought by id
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId})
@@ -53,6 +55,7 @@ module.exports = {
     }
   },
 
+  // update a thought
   async updateThoughtById(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -71,6 +74,7 @@ module.exports = {
     }
   },
 
+  // delete a thought
   async deleteThoughtById(req, res) {
     try {
       const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });

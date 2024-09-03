@@ -1,4 +1,5 @@
 const { Schema, Types } = require('mongoose');
+const formatDate = require('../utils/formatDate');
 
 const reactionSchema = new Schema(
   {
@@ -11,14 +12,15 @@ const reactionSchema = new Schema(
       required: true,
       maxLength: 280,
     },
+    // user that made this reaction
     username: {
       type: String,
       required: true,
     },
-    // TODO Use a getter method to format the timestamp on query
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
+      get: formatDate
     }, 
   },
   {
@@ -28,6 +30,5 @@ const reactionSchema = new Schema(
     id: false,
   }
 );
-
 
 module.exports = reactionSchema;

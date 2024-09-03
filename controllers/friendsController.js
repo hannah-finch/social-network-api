@@ -1,6 +1,11 @@
 // require necessary models
 const { User } = require('../models');
 
+// add a friend with the userId and friendId as parameters in the url
+/* EXAMPLE: 
+localhost:3001/api/users/ { userId } /friends/ { friendId }
+*/
+
 module.exports = {
   async addFriend(req, res) {
     try {

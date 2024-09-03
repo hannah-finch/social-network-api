@@ -2,14 +2,20 @@
 const { Thought } = require('../models');
 
 /*
-Example reaction:
+EXAMPLE DATA: CREATE a reaction
 {
   "reactionBody": "Some words that are in reaction",
   "username": "test 2"
 }
+
+EXAMPLE DATA: DELETE a reaction with it's reactionID in the req.body JSON
+{
+  "reactionId": "66c3fed120d66ac661a2f3c4"
+}
 */
 
 module.exports = {
+  // create a reaction by updating the thought's reactions array
   async createReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -23,13 +29,7 @@ module.exports = {
     }
   },
 
-/*
-Example delete reaction:
-{
-  "reactionId": "66c3fed120d66ac661a2f3c4"
-}
-*/  
-
+  // remove a reaction
   async removeReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
