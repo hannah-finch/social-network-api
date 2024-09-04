@@ -68,6 +68,57 @@ Example data for request body:
 
 DELETE request at /api/users/(USER's ID HERE)
 
+### Add a friend
+
+POST request at /api/users/(USER's ID HERE)/friends/(FRIEND's USER ID HERE)
+
+### Remove a friend
+
+DELETE request at /api/users/(USER's ID HERE)/friends/(FRIEND's USER ID HERE)
+
+### Find all thoughts
+
+GET request at /api/thoughts
+
+### Create a thought
+
+POST request at /api/thoughts
+
+Example data for request body:
+````
+{
+  "thoughtText": "Here's a cool thought...",
+  "username": "User's username",
+  "userId": "User's user ID"
+}
+````
+
+### Delete a thought
+
+DELETE request at /api/thoughts/(THOUGHT ID HERE)
+
+### Create a reaction
+
+POST request at /api/thoughts/(THOUGHT ID)/reactions
+
+Example data for request body:
+````
+{
+  "reactionBody": "Some words that are in reaction",
+  "username": "User's username"
+}
+````
+
+### Delete a reaction
+
+DELETE request at /api/thoughts/(THOUGHT ID)/reactions
+
+Example data for request body:
+````
+{
+  "reactionId": "reaction's id"
+}
+````
 
 ## License
 
